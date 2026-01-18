@@ -1,0 +1,22 @@
+### Request 1: Health Check
+GET http://localhost:8080/ping
+
+### Request 2: Send Alert 1
+POST http://localhost:8080/v1/alerts
+Content-Type: application/json
+
+{
+    "user_id": "user_001",
+    "type": "system",
+    "payload": {"msg": "First alert"}
+}
+
+### Request 3: Send Alert 2
+POST http://localhost:8080/v1/alerts
+Content-Type: application/json
+
+{
+    "user_id": "user_002",
+    "type": "network",
+    "payload": {"msg": "Second alert"}
+}

@@ -1,17 +1,25 @@
 package queue
+
 import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/segmentio/kafka-go"
+	"time"
+
 	"github.com/pawan-sharma-12/sentinel/internal/models"
+	"github.com/segmentio/kafka-go"
 )
+
 // NewKafkaWriter initializes a new Kafka writer instance
 func NewKafkaWriter(brokerURL, topic string) *kafka.Writer{
 	return &kafka.Writer{
-		Addr: kafka.TCP(brokerURL),
-		Topic: topic, 
-		Balancer : &kafka.LeastBytes{},
+		Addr:         kafka.TCP("localhost:9092"),
+		Topic:        "raw-events",
+		Balancer:     &kafka.LeastBytes{},
+		// Add these three lines:
+		BatchTimeout: 10 * time.Millisecond, // Send every 10ms instead of 1s
+		BatchSize:    100,                  // Or when 100 messages are ready
+		Async:        true,                 // Don't wait for Kafka to acknowledge before responding to GIN
 	}
 }
 // PublishEvent sends the event to the Kafka topic

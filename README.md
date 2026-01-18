@@ -1,3 +1,5 @@
+Markdown
+
 # Sentinel: Distributed Event Alerting & Rate-Limiting Engine
 
 Sentinel is a high-performance, distributed alerting system built in **Go**. It is designed to ingest massive volumes of events via a REST API, buffer them using **Apache Kafka**, and process them through workers that implement distributed rate-limiting using **Redis**.
@@ -33,7 +35,7 @@ Sentinel is a high-performance, distributed alerting system built in **Go**. It 
 ### 1. Setup Infrastructure
 ```bash
 make infra
-**2. Run the Services**
+2. Run the Services
 Open two terminals:
 
 Bash
@@ -43,7 +45,7 @@ go run cmd/worker/main.go
 
 # Terminal 2: Start the API
 go run cmd/producer/main.go
-**3. Test the Rate Limiter**
+3. Test the Rate Limiter
 Send 6 requests for the same user to see the 6th one get throttled:
 
 Bash
@@ -53,7 +55,6 @@ for i in {1..6}; do
   -H "Content-Type: application/json" \
   -d '{"user_id": "pawan_sharma", "type": "PRICE_DROP", "payload": {"item": "MacBook"}}'
 done
-
 📈 Future Improvements
 [ ] Implement Sliding Window rate limiting using Redis Sorted Sets.
 
@@ -64,3 +65,5 @@ done
 Author: Pawan Sharma
 
 Role: Technical Lead @ HCL Technologies
+
+Location: Bengaluru, India

@@ -2,7 +2,7 @@ Markdown
 
 # Sentinel: Distributed Event Alerting & Rate-Limiting Engine
 
-Sentinel is a high-performance, distributed alerting system built in **Go**. It is designed to ingest massive volumes of events via a REST API, buffer them using **Apache Kafka**, and process them through workers that implement distributed rate-limiting using **Redis**.
+Sentinel is a high-performance, distributed alerting system built in **Go**. It is designed to ingest massive volumes of events (1billion+ req/day) via a REST API, buffer them using **Apache Kafka**, and process them through workers that implement distributed rate-limiting using **Redis**.
 
 ## 🚀 Key Features
 - **Asynchronous Processing:** Decouples event ingestion from notification delivery using Kafka.
